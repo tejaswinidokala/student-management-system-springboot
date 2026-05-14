@@ -1,66 +1,40 @@
-✅Summary for Project
+# Student Management System
 
-📌 Project Name := Student Management System :– 
+A simple Java Spring Boot project for managing student records using CRUD operations.
 
-📝 Description:_ 
-⏩Student Management System built using Spring Boot, JSP, and MySQL. Includes RESTful API support, web views with JSP, Hibernate validation, and full CRUD functionality. Ideal for learning Java web development using Spring MVC and JPA. It includes features like adding, updating, deleting, and viewing students with proper validations, exception handling, and MySQL integration.
+## About the Project
 
+This project is a basic Student Management System built using Spring Boot. It allows users to add, view, update, and delete student details. The project helped me practice backend development, REST APIs, Spring MVC, MySQL database integration, and layered application structure.
 
-🔧 Tech Stack:
-✅Backend Language: Java 8.
-✅Framework: Spring Boot 2.4.13.
-✅Persistence: Spring Data JPA.
-✅Database: MySQL V:= mysql-connector-j (8.3.0).
-✅View Layer: .JSP (via tomcat-embed-jasper) JSTL.
-✅API Support: Spring REST Controller (`@RestController`).
-✅Validation: Hibernate Validator (via spring-boot-starter-validation (@Valid)).
-✅Build Tool: Maven.
-✅IDE Compatible: Eclipse (.classpath, .project).
-✅Logging: Uses log files (app.log) / SLF4J / Logback.
-✅Hot Reloading: Spring Boot DevTools.
+## Technologies Used
 
+- Java
+- Spring Boot
+- Spring MVC
+- Spring Data JPA
+- MySQL
+- JSP
+- Maven
 
-💡 Key Features:
-Create, Read, Update, Delete (CRUD) for student entities.
-Validations on input forms.
-JSP-based front-end views.
-Maven-based build and dependency management.
-Structured for rapid development using Spring Boot.
+## Features
 
+- Add new student records
+- View all students
+- Update student details
+- Delete student records
+- Store data in MySQL database
+- Basic validation and exception handling
 
-🚀 Features :-
-✅ Full CRUD operations for Student Entity.
-✅ REST API using @RestController (API-first backend development).
-✅ Web UI using @Controller + JSP views.
-✅ Validations using @Valid and Hibernate Validator.
-✅ Global Exception Handling.
-✅ MySQL database integration.
-✅ Logging with SLF4J/Logback.
-✅ Eclipse IDE ready.
-✅ Hot reload with Spring Boot DevTools.
+## What I Learned
 
+- Creating REST APIs using Spring Boot
+- Using controller, service, repository, and entity layers
+- Connecting Spring Boot with MySQL
+- Performing CRUD operations
+- Handling basic exceptions in a backend application
 
-✅Access via browser: http://localhost:8080  .
-✅REST API: http://localhost:8080/students  .
+## Project Reference
 
+Original base project reference: https://github.com/gugulmishra30/Spring-Boot-Student-Management-System
 
-🌐 API Examples;-
-| Method | Endpoint         | Description          |
-|--------|------------------|----------------------|
-| GET    | `/students`      | Get all students     |
-| POST   | `/students`      | Add new student      |
-| PUT    | `/students`      | Update a student     |
-| DELETE | `/students`      | Delete a student     |
-
-
-📁 Folder Structure Highlights:
-src/main/java – Contains controllers, models, services.
-src/main/resources/static – Static content (if any).
-src/main/webapp/WEB-INF/jsp – JSP views.
-pom.xml – Project dependencies and configuration.
-.settings/, .classpath, .project – Eclipse project metadata.
-
-
-
-📢‼️Some Informations :-
-⏩If you clone or download this project, you must update the application.properties file with your own MySQL database credentials (username, password, and database name). Without this change, the project will not run on your local system. Additionally, make sure your local MySQL server is running and accessible.
+Customized and practiced by Tejaswini Dokala for learning Spring Boot, Spring MVC, REST API, and MySQL.
