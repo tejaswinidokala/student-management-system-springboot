@@ -1,6 +1,8 @@
 package com.demo.repository;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,4 +15,8 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
 	List<Attendance> findByStudent_EmailOrStudent_Mobile(String email, String mobile);
 
 	List<Attendance> findAllByOrderByAttendanceDateDesc();
+
+	Optional<Attendance> findByStudentIdAndAttendanceDate(long studentId, LocalDate attendanceDate);
+
+	List<Attendance> findByAttendanceDate(LocalDate attendanceDate);
 }

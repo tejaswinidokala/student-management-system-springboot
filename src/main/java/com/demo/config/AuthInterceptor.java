@@ -15,23 +15,28 @@ import jakarta.servlet.http.HttpSession;
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 
-	//Update / Delete of student records, and attendance management -> teachers only.
+	//Update / Delete of student records, registration, and attendance/academic management -> teachers only.
 	private static final Set<String> TEACHER_ONLY_PATHS = Set.of(
+			"/view", "/createReg",
 			"/updateReg", "/studentByIdReg", "/deleteReg",
 			"/teacherDashboard",
 			"/attendance/mark", "/attendance/save",
+			"/attendance/mark-all", "/attendance/mark-all/save",
 			"/attendance/list", "/attendance/delete",
-			"/attendance/edit", "/attendance/update"
+			"/attendance/edit", "/attendance/update",
+			"/attendance/monthly",
+			"/academic/add", "/academic/save"
 	);
 
 	//Only students should land here.
 	private static final Set<String> STUDENT_ONLY_PATHS = Set.of(
-			"/studentDashboard", "/attendance/search"
+			"/studentDashboard", "/attendance/search",
+			"/attendance/monthly-search", "/academic/search"
 	);
 
 	//Any logged in user (teacher or student) may use these.
 	private static final Set<String> LOGGED_IN_PATHS = Set.of(
-			"/view", "/createReg", "/findReg"
+			"/findReg"
 	);
 
 	@Override

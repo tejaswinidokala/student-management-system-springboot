@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign up - Student Management System</title>
 <link rel="stylesheet" href="/css/style.css">
+<script src="/js/theme.js" defer></script>
 </head>
 <body>
 	<div class="login-wrapper">
+		<button class="theme-toggle" type="button">Dark mode</button>
 		<div class="card login-card">
 			<h2>Create a student account</h2>
 

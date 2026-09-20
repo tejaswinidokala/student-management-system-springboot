@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Attendance</title>
+<title>My Monthly Attendance</title>
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/theme.js" defer></script>
 </head>
@@ -16,13 +16,14 @@
 		<div>
 			<button class="theme-toggle" type="button">Dark mode</button>
 			<a href="/studentDashboard">Dashboard</a>
+			<a href="/attendance/search">Day-by-day view</a>
 			<a href="/logout">Logout</a>
 		</div>
 	</div>
 	<div class="container">
 		<div class="card">
-			<h2>Check Attendance</h2>
-			<form class="search-form" action="/attendance/search" method="get">
+			<h2>My Monthly Attendance</h2>
+			<form class="search-form" action="/attendance/monthly-search" method="get">
 				<div>
 					<label for="email">Email</label>
 					<input id="email" type="email" name="email" placeholder="your email" />
@@ -33,38 +34,30 @@
 				</div>
 				<button type="submit">Search</button>
 			</form>
-
-			<c:if test="${searched}">
-				<c:choose>
-					<c:when test="${empty records}">
-						<p>No attendance records found.</p>
-					</c:when>
-					<c:otherwise>
-						<table>
-							<tr>
-								<th>Date</th>
-								<th>Status</th>
-							</tr>
-							<c:forEach var="record" items="${records}">
-								<tr>
-									<td>${record.attendanceDate}</td>
-									<td>
-										<c:choose>
-											<c:when test="${record.status == 'PRESENT'}">
-												<span class="badge badge-present">Present</span>
-											</c:when>
-											<c:otherwise>
-												<span class="badge badge-absent">Absent</span>
-											</c:otherwise>
-										</c:choose>
-									</td>
-								</tr>
-							</c:forEach>
-						</table>
-					</c:otherwise>
-				</c:choose>
-			</c:if>
 		</div>
+
+		<c:if test="${searched}">
+			<c:choose>
+				<c:when test="${empty summary}">
+					<div class="card">
+						<p>No attendance records found.</p>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="month" items="${summary}">
+						<div class="card">
+							<h3>${month.monthLabel}</h3>
+							<p>
+								Present: ${month.presentCount} &nbsp;|&nbsp;
+								Absent: ${month.absentCount} &nbsp;|&nbsp;
+								Total marked (till date): ${month.totalMarked} &nbsp;|&nbsp;
+								Attendance: ${month.percentage}%
+							</p>
+						</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+		</c:if>
 	</div>
 </body>
 </html>

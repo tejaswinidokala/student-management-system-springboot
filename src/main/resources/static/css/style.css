@@ -8,6 +8,24 @@
 	--text: #1f2430;
 	--muted: #6b7280;
 	--border: #e2e5ec;
+	--input-bg: #ffffff;
+	--table-head: #f0f3f9;
+	--row-hover: #fafbfe;
+	--shadow: rgba(0, 0, 0, 0.05);
+	color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+	--bg: #151a22;
+	--card-bg: #202733;
+	--text: #edf2f7;
+	--muted: #a9b4c2;
+	--border: #384454;
+	--input-bg: #18202b;
+	--table-head: #2a3442;
+	--row-hover: #293443;
+	--shadow: rgba(0, 0, 0, 0.22);
+	color-scheme: dark;
 }
 
 * {
@@ -19,6 +37,12 @@ body {
 	font-family: "Segoe UI", Roboto, Arial, sans-serif;
 	background: var(--bg);
 	color: var(--text);
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 .navbar {
@@ -47,10 +71,22 @@ body {
 	letter-spacing: 0.3px;
 }
 
+.theme-toggle {
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.65);
+	padding: 7px 11px;
+	margin-left: 18px;
+	font-size: 0.85rem;
+}
+
+.theme-toggle:hover {
+	background: rgba(255, 255, 255, 0.14);
+}
+
 .container {
 	max-width: 900px;
 	margin: 32px auto;
-	padding: 0 20px;
+	padding: 0 clamp(16px, 4vw, 20px);
 }
 
 .card {
@@ -58,7 +94,7 @@ body {
 	border: 1px solid var(--border);
 	border-radius: 10px;
 	padding: 24px 28px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 3px var(--shadow);
 	margin-bottom: 24px;
 }
 
@@ -71,6 +107,7 @@ form.styled-form {
 	flex-direction: column;
 	gap: 14px;
 	max-width: 420px;
+	width: 100%;
 }
 
 form.styled-form label {
@@ -87,6 +124,8 @@ input[type="date"],
 select {
 	padding: 10px 12px;
 	border: 1px solid var(--border);
+	background: var(--input-bg);
+	color: var(--text);
 	border-radius: 6px;
 	font-size: 0.95rem;
 	width: 100%;
@@ -143,6 +182,8 @@ button:hover, input[type="submit"]:hover, .btn:hover {
 .search-form > div {
 	display: flex;
 	flex-direction: column;
+	flex: 1 1 180px;
+	min-width: 0;
 }
 
 .search-form label {
@@ -155,6 +196,8 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 	margin-top: 10px;
+	display: block;
+	overflow-x: auto;
 }
 
 th, td {
@@ -164,14 +207,14 @@ th, td {
 }
 
 th {
-	background: #f0f3f9;
+	background: var(--table-head);
 	font-size: 0.85rem;
 	text-transform: uppercase;
 	color: var(--muted);
 }
 
 tr:hover {
-	background: #fafbfe;
+	background: var(--row-hover);
 }
 
 .badge {
@@ -241,6 +284,19 @@ tr:hover {
 	justify-content: center;
 }
 
+.login-wrapper .theme-toggle {
+	position: fixed;
+	top: 18px;
+	right: 18px;
+	margin-left: 0;
+	color: var(--text);
+	border-color: var(--border);
+}
+
+.login-wrapper .theme-toggle:hover {
+	background: var(--table-head);
+}
+
 .login-card {
 	width: 100%;
 	max-width: 380px;
@@ -256,4 +312,52 @@ tr:hover {
 	font-size: 0.82rem;
 	color: var(--muted);
 	margin-top: 14px;
+}
+
+pre {
+	white-space: normal;
+	font: inherit;
+	margin: 0;
+}
+
+@media (max-width: 640px) {
+	.navbar {
+		align-items: flex-start;
+		gap: 12px;
+		padding: 14px 18px;
+	}
+
+	.navbar > div:last-child {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: 8px;
+	}
+
+	.navbar a,
+	.theme-toggle {
+		margin-left: 8px;
+	}
+
+	.card {
+		padding: 20px 16px;
+	}
+
+	h1 {
+		font-size: 1.7rem;
+	}
+
+	h2 {
+		font-size: 1.4rem;
+	}
+
+	.search-form {
+		align-items: stretch;
+	}
+
+	.search-form button,
+	.search-form .btn {
+		width: 100%;
+		text-align: center;
+	}
 }

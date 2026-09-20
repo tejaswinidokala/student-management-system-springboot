@@ -5,13 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Attendance Records</title>
 <link rel="stylesheet" href="/css/style.css">
+<script src="/js/theme.js" defer></script>
 </head>
 <body>
 	<div class="navbar">
 		<div class="brand">Student Management System</div>
 		<div>
+			<button class="theme-toggle" type="button">Dark mode</button>
 			<a href="/teacherDashboard">Dashboard</a>
 			<a href="/attendance/mark">Mark Attendance</a>
 			<a href="/logout">Logout</a>

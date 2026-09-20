@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Attendance</title>
+<title>My SGPA / CGPA</title>
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/theme.js" defer></script>
 </head>
@@ -21,8 +21,8 @@
 	</div>
 	<div class="container">
 		<div class="card">
-			<h2>Check Attendance</h2>
-			<form class="search-form" action="/attendance/search" method="get">
+			<h2>My SGPA / CGPA</h2>
+			<form class="search-form" action="/academic/search" method="get">
 				<div>
 					<label for="email">Email</label>
 					<input id="email" type="email" name="email" placeholder="your email" />
@@ -37,27 +37,19 @@
 			<c:if test="${searched}">
 				<c:choose>
 					<c:when test="${empty records}">
-						<p>No attendance records found.</p>
+						<p>No academic records found yet.</p>
 					</c:when>
 					<c:otherwise>
+						<p><b>CGPA: ${cgpa}</b></p>
 						<table>
 							<tr>
-								<th>Date</th>
-								<th>Status</th>
+								<th>Semester</th>
+								<th>SGPA</th>
 							</tr>
-							<c:forEach var="record" items="${records}">
+							<c:forEach var="r" items="${records}">
 								<tr>
-									<td>${record.attendanceDate}</td>
-									<td>
-										<c:choose>
-											<c:when test="${record.status == 'PRESENT'}">
-												<span class="badge badge-present">Present</span>
-											</c:when>
-											<c:otherwise>
-												<span class="badge badge-absent">Absent</span>
-											</c:otherwise>
-										</c:choose>
-									</td>
+									<td>${r.semester}</td>
+									<td>${r.sgpa}</td>
 								</tr>
 							</c:forEach>
 						</table>

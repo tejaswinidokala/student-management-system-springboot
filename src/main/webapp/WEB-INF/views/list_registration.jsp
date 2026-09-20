@@ -5,20 +5,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>All Students</title>
 <link rel="stylesheet" href="/css/style.css">
+<script src="/js/theme.js" defer></script>
 </head>
 <body>
 	<div class="navbar">
 		<div class="brand">Student Management System</div>
 		<div>
+			<button class="theme-toggle" type="button">Dark mode</button>
 			<a href="/">Dashboard</a>
 			<a href="/logout">Logout</a>
 		</div>
 	</div>
 	<div class="container">
 	<div class="card">
-	<p><a href="view">Create new registration</a></p>
+	<c:if test="${sessionScope.role == 'TEACHER'}">
+		<p><a href="/view">Create new registration</a></p>
+	</c:if>
 	<form class="search-form" action="findReg" method="get">
 		<div>
 		<label for="name">Name</label>
